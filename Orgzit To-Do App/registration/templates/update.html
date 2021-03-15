@@ -1,0 +1,112 @@
+{% extends 'index.html' %}
+
+{% block header %}
+    <div class="container">
+      <div class="col-xs-12">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>{{ message }}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+    <div class="container">
+
+        <br>
+        <h2>To-Do Update</h2>
+        <div class="row">
+            {% for todo in data %}
+            <div class="col-md-4">
+
+                    <form method="post" action="/todo/update_db/">
+                        {% csrf_token %}
+
+                    <div class="card" style="width: 20rem;">
+                      <div class="card-body">
+                            <h5 class="card-title">
+                                <input type="email" class="form-control" readonly  name="email" value="{{ todo.email }}" aria-describedby="emailHelp" placeholder="Enter email">
+                            </h5>
+                          <p class="card-text">
+                              <div class="row">
+                                  <div class="col-md-12">
+                                       <p>
+                                      <b>Title : </b>
+                                      <h7>
+                                        <input type="text" class="form-control" required name="title" value="{{ todo.title }}" aria-describedby="emailHelp" placeholder="Enter Title">
+
+                                      </h7>
+                                  </p>
+                                  </div>
+                              </div>
+
+                                <div class="row">
+                                      <div class="col-md-12">
+                                           <p>
+                                          <b>Description : </b>
+                                          <h7>
+                                              <textarea class="form-control" required name="description"  aria-describedby="emailHelp" placeholder="Enter Description">{{ todo.description }}</textarea>
+                                          </h7>
+                                      </p>
+                                      </div>
+                                </div>
+
+                                <div class="row">
+                                      <div class="col-md-12">
+                                           <p>
+                                          <b>Status : </b>
+                                          <h7>
+                                             <select  name="status" >
+                                                <option selected="selected" disabled>{{ todo.status }}</option>
+                                                <option value=1>Pending</option>
+                                                <option value=2>In Progress</option>
+                                                <option value=3>Completed</option>
+                                             </select>
+                                          </h7>
+                                      </p>
+                                      </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            <b>Scheduled for : </b>
+                                                <h7>{{ todo.time }}</h7>
+                                        </p>
+                                            <h7><b>Update to :</b>
+                                                  <input type="datetime-local" class="form-control"  name="time" placeholder="Date">
+                                            </h7>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-6 col-md-6">
+                                        <button type="submit" name="update" value="Update" class="btn btn-primary">Update</button>
+                                    </div>
+                                    <div class="col-xs-6 col-md-6">
+                                        <button type="submit" name="delete"  value="Delete" class="btn btn-danger">Delete</button>
+                                    </div>
+                                </div>
+
+
+
+                          </p>
+                        </form>
+                    </div>
+                </div>
+                <br>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

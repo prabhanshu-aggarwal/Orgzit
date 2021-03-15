@@ -1,0 +1,126 @@
+{% load static %}
+{#{% load widget_tweaks %}#}
+
+<html class="no-js" lang="zxx">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Paras" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stay Adobe</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/land.css' %}" />
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+{##}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+      <script>
+        $(document).ready(function() {
+            $(document).on('click', '.nav-item a', function (e) {
+                $(this).parent().addClass('active').siblings().removeClass('active');
+            });
+        });
+
+      </script>
+  </head>
+  <body data-spy="scroll" data-target="#primary-menu">
+
+{% block navbar %}
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="/">StayAdobe</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link" href="{% url 'registration:create' %}">Create</a>
+              <a class="nav-item nav-link" href="{% url 'registration:read' %}">Read</a>
+              <a class="nav-item nav-link" href="{% url 'registration:update_delete' %}">Update & Delete</a>
+              <a class="nav-item nav-link" href="{% url 'registration:read-todo' %}">ListAPI View</a>
+            </div>
+          </div>
+    </nav>
+
+
+{% endblock %}
+
+
+{% block header %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+                <h2>
+                    To-Do list App
+                </h2>
+                <br>
+                <h4>
+                    Features:
+                    <h6>
+                        <ul>
+                            1. Create Todos
+                        </ul>
+                        <ul>
+                            2. Read Todos via ListAPI view method
+                        </ul>
+                        <ul>
+                            3. Update Todos
+                        </ul>
+                        <ul>
+                            4. Delete Todos
+                        </ul>
+                        <ul>
+                            5. Modified Admin Interface of Todos
+                            <ul>
+                                a. Can Filter
+                            </ul>
+                            <ul>
+                                b. Can Search
+
+                            </ul>
+                            <ul>
+                                a. Can Export bulk data as CSV
+
+                            </ul>
+                            <ul>
+                                a. Custon User Model Interface with Email and Password
+
+                            </ul>
+                        </ul>
+                    </h6>
+                </h4>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+<script type="text/javascript">
+
+    $('.dropdown-menu > .dropdown-item').click(function(){
+        $('#selected').text($(this).text());
+    });
+
+
+</script>
+
+  </body>
+</html>

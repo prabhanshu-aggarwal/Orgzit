@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block header %}
+    <div class="container">
+        <br>
+        <h2>To-Do List</h2>
+        <div class="row">
+
+            {% for todo in data %}
+            <div class="col-md-4">
+
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ todo.email }}</h5>
+                      <p class="card-text">
+                          <p><b>Title : </b><h7>{{ todo.title }}</h7></p>
+                          <p><b>Description : </b> <h7>{{todo.description}}</h7></p>
+                          <p><b>Status :</b> <h7>{{ todo.status }}</h7></p>
+                          <p><b>Scheduled for :</b> <h7>{{ todo.time }}</h7></p>
+                      </p>
+                  </div>
+                </div>
+                <br>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
